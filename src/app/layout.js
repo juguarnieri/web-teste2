@@ -7,7 +7,7 @@ const font = Inter({
 });
 
 export const metadata = {
-    title: "My Exam Mockup",
+    title: "Meu Site",
     icons: {
         icon: "/icons/favicon.ico",
     },

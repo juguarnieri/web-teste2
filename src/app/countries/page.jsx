@@ -116,9 +116,6 @@ export default function Countries() {
           onClose={() => setSelectedCountry(null)}
         />
       )}
-
-
-
     </div>
   );
 }

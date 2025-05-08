@@ -33,11 +33,11 @@ return (
         <div className={styles.modalContent}>
             <h2>{country.translations.por.common}</h2>
             <Image
-            src={country.flags.png}
-            alt={`Bandeira de ${country.translations.por.common}`}
-            width={150}
-            height={100}
-            />
+  src={country.flags?.png || "/placeholder.png"}
+  alt={`Bandeira de ${country.translations?.por?.common || "Desconhecido"}`}
+  width={150}
+  height={100}
+/>
             <p>Nome Oficial: {country.translations.por.official}</p>
             <p>Capital: {country.capital || "Não tem"}</p>
             <p>Continente: {country.region}</p>

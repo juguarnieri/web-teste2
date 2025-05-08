@@ -4,13 +4,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: lightblue;
+    background-color: rgb(231, 174, 214);
 }
 
 .button {
     margin: 5px;
     padding: 10px 15px;
-    background-color: blue;
+    background-color: rgb(219, 64, 167);
     color: white;
     border-radius: 5px;
 }
@@ -18,7 +18,7 @@
 .buttonReset {
     margin: 5px;
     padding: 10px 15px;
-    background-color: green;
+    background-color: rgb(189, 120, 174);
     color: white;
     border-radius: 5px;
 }
@@ -34,13 +34,8 @@
 .scrollTopButton {
     margin: 40px auto 20px;
     padding: 10px 20px;
-    background-color: blue;
+    background-color: rgb(146, 29, 130);
     color: white;
     border: none;
     border-radius: 8px;
-}
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
 }
