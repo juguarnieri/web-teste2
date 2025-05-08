@@ -1,15 +1,15 @@
 "use client";
 
-import React, { cache, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import CountryCard from "../../components/CountryCard";
 import CountryModal from "../../components/CountryModal";
 import Loading from "../../components/Loading";
 import styles from "./Countries.module.css";
-import { Pagination} from 'antd';
-import { ToastContainer, toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+import { Pagination } from "antd";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const regions = ["africa", "americas", "antarctic", "asia", "europe", "oceania"];
 const countriesPerPage = 32;
@@ -21,16 +21,24 @@ export default function Countries() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
-
   const fetchCountries = async (region = "") => {
     setIsLoading(true);
     try {
+      const cachedCountries = sessionStorage.getItem(region || "all");
+      if (cachedCountries) {
+        setCountries(JSON.parse(cachedCountries));
+        setIsLoading(false);
+        return;
+      }
+
       const url = region
         ? `https://restcountries.com/v3.1/region/${region}`
         : "https://restcountries.com/v3.1/all";
       const response = await axios.get(url);
+
       setCountries(response.data);
-      sessionStorage.setItem("countries", JSON.stringify(response.data));
+      sessionStorage.setItem(region || "all", JSON.stringify(response.data));
+
       if (!region) {
         setAllCountries(response.data);
       }
@@ -60,8 +68,11 @@ export default function Countries() {
       pauseOnHover: true,
       draggable: true,
       theme: "light",
+      className: "toast-custom",
+      progressClassName: "toast-custom-progress",
+      icon: <span style={{ color: "#ff66a3", fontSize: "1.5rem" }}>🌎</span>, 
     });
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -74,10 +85,13 @@ export default function Countries() {
             key={region}
             className={styles.button}
             onClick={() => {
-              fetchCountries(region)
-              countryClick("Você clicou na região: " + region.charAt(0).toUpperCase() + region.slice(1))
-            }
-            }
+              fetchCountries(region);
+              countryClick(
+                "Você clicou na região: " +
+                  region.charAt(0).toUpperCase() +
+                  region.slice(1)
+              );
+            }}
           >
             {region.charAt(0).toUpperCase() + region.slice(1)}
           </button>
@@ -88,13 +102,13 @@ export default function Countries() {
       </div>
 
       <Pagination
-        current={currentPage}
-        total={countries.length}
-        pageSize={countriesPerPage}
-        onChange={(page) => setCurrentPage(page)}
-        showSizeChanger={false}
-        className={styles.pagination}
-      />
+  current={currentPage}
+  total={countries.length}
+  pageSize={countriesPerPage}
+  onChange={(page) => setCurrentPage(page)}
+  showSizeChanger={false}
+  className={styles.pagination} 
+/>
 
       <div className={styles.cardContainer}>
         {isLoading ? (

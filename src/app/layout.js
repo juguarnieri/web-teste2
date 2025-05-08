@@ -11,7 +11,7 @@ export const metadata = {
     icons: {
         icon: "/icons/favicon.ico",
     },
-    description: "Projeto pra mostrar tudo que eu sei"
+    description: "Projeto demonstrarb tudo que eu sei!"
 };
 
 export default function RootLayout({ children }) {

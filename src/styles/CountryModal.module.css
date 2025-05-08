@@ -12,13 +12,58 @@
 }
 
 .modal {
-    background: lightgray;
-    width: 95%;
+    background: #f9f9f9;
+    width: 90%;
     max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     position: relative;
     padding: 20px;
+    animation: fadeIn 0.3s ease;
 }
 
 .flag {
     margin-bottom: 20px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
 }
+.modalContent {
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.modalContent p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.modalContent p span {
+    font-weight: bold;
+    color: #222;
+}
+
+.modalContent img {
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    height: auto;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+

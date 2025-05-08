@@ -31,20 +31,21 @@ return (
         </div>
     ) : (
         <div className={styles.modalContent}>
-            <h2>{country.translations.por.common}</h2>
-            <Image
-  src={country.flags?.png || "/placeholder.png"}
-  alt={`Bandeira de ${country.translations?.por?.common || "Desconhecido"}`}
-  width={150}
-  height={100}
-/>
-            <p>Nome Oficial: {country.translations.por.official}</p>
-            <p>Capital: {country.capital || "Não tem"}</p>
-            <p>Continente: {country.region}</p>
-            <p>Sub-região: {country.subregion || "Não tem"}</p>
-            <p>População: {country.population.toLocaleString()}</p>
-            <p>Fuso Horário: {country.timezones[0]}</p>
-        </div>
+        <h2>{country.translations.por.common}</h2>
+        <Image
+            src={country.flags?.png || "/placeholder.png"}
+            alt={`Bandeira de ${country.translations?.por?.common || "Desconhecido"}`}
+            width={150}
+            height={100}
+            className={styles.image} // Adiciona a classe para estilizar a imagem
+        />
+        <p><span>Nome Oficial:</span> {country.translations.por.official}</p>
+        <p><span>Capital:</span> {country.capital || "Não tem"}</p>
+        <p><span>Continente:</span> {country.region}</p>
+        <p><span>Sub-região:</span> {country.subregion || "Não tem"}</p>
+        <p><span>População:</span> {country.population.toLocaleString()}</p>
+        <p><span>Fuso Horário:</span> {country.timezones[0]}</p>
+    </div>
     )}
     </Modal>
     );

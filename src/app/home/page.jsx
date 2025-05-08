@@ -23,7 +23,6 @@ export default function Home() {
             </div>
         );
     }
-
     return (
         <div className={styles.container}>
             <Image className={styles.image} src="/images/maiko.png" alt="Maiko Xikixiki" width={300} height={300} />
